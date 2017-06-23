@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnucklesFingerTracker_v5-4", "Assembly-CSharp.csproj", "{41DFD7D2-C49C-2507-440E-7545F026339F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KnucklesFingerTracker_v5-4", "Assembly-CSharp-Editor.csproj", "{03C82F50-8153-22A1-2706-F1701202C5FB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{41DFD7D2-C49C-2507-440E-7545F026339F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41DFD7D2-C49C-2507-440E-7545F026339F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41DFD7D2-C49C-2507-440E-7545F026339F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41DFD7D2-C49C-2507-440E-7545F026339F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03C82F50-8153-22A1-2706-F1701202C5FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03C82F50-8153-22A1-2706-F1701202C5FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03C82F50-8153-22A1-2706-F1701202C5FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03C82F50-8153-22A1-2706-F1701202C5FB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
