@@ -169,15 +169,21 @@ public class KnucklesPhysicalInteraction : MonoBehaviour {
 	}
 
 	void CheckGrabDone(){
-		int i = gfingers [0];
-		if (i <=1) { // we're checking the thumb or index finger, which means we have to check if you've let go of either your thumb or index finger
-			if (hc.handPose.thumb_lift > gfingerscurls[0] || hc.handPose.index_curl > gfingerscurls[1]) {
-				GrabEnd (true);
-			}
-		}else{ // we're checking one of the middle thru pinky fingers, and since the palm can't bend we only need to check the active finger
-			float fingerlift = hc.getposfromindex(i);
+		if (grabTarget.Kind != KnucklesInteractable.interactType.Tool) {
+			int i = gfingers [0];
+			if (i <= 1) { // we're checking the thumb or index finger, which means we have to check if you've let go of either your thumb or index finger
+				if (hc.handPose.thumb_lift > gfingerscurls [0] || hc.handPose.index_curl > gfingerscurls [1]) {
+					GrabEnd (true);
+				}
+			} else { // we're checking one of the middle thru pinky fingers, and since the palm can't bend we only need to check the active finger
+				float fingerlift = hc.getposfromindex (i);
 
-			if (fingerlift > 0.4f) {
+				if (fingerlift > 0.4f) {
+					GrabEnd (true);
+				}
+			}
+		} else {
+			if (hc.handOpenFull) {
 				GrabEnd (true);
 			}
 		}
@@ -219,6 +225,7 @@ public class KnucklesPhysicalInteraction : MonoBehaviour {
 			GrabEnd (false);
 		} else {
 //			print ("boi");
+			grabTarget.SetInput(hc.vrcontroller);
 			timeSinceGrabbing = 0;
 			CheckGrabDone ();
 			//make sure to clamp the fingers to the positions they were at when they grabbed the thing
@@ -231,15 +238,19 @@ public class KnucklesPhysicalInteraction : MonoBehaviour {
 
 	void ApplyFollowForce(){ // makes the object we're holding actually follow our hand
 		if (grabTarget) {
-			if (grabTarget.isSnapping) {
-				if (grabTarget.snapRotate) { // if it's set to only follow rotation
-					grabTarget.rb.angularVelocity = OffsetToAngular (grabTarget.transform.rotation, grabPos.rotation, Time.fixedDeltaTime);
-				} else {
-					grabTarget.rb.AddForceAtPosition (-grabTarget.rb.GetPointVelocity (snapPos.position) + (transform.position - snapPos.position) / Time.fixedDeltaTime * 0.3f, snapPos.position, ForceMode.VelocityChange);
-				}
-			} else { //if it's a normal pickupable object
+			if (grabTarget.Kind == KnucklesInteractable.interactType.Grabbable) {
 				grabTarget.rb.velocity = (grabPos.position - grabTarget.transform.position) / Time.deltaTime;
 				grabTarget.rb.angularVelocity = OffsetToAngular (grabTarget.transform.rotation, grabPos.rotation, Time.fixedDeltaTime);
+			}
+			if (grabTarget.Kind == KnucklesInteractable.interactType.SnappingGrabbableTranslate) {
+				grabTarget.rb.AddForceAtPosition (-grabTarget.rb.GetPointVelocity (snapPos.position) + (transform.position - snapPos.position) / Time.fixedDeltaTime * 0.3f, snapPos.position, ForceMode.VelocityChange);
+			}
+			if (grabTarget.Kind == KnucklesInteractable.interactType.SnappingGrabbableRotate) {
+				grabTarget.rb.angularVelocity = OffsetToAngular (grabTarget.transform.rotation, grabPos.rotation, Time.fixedDeltaTime);
+			}
+			if (grabTarget.Kind == KnucklesInteractable.interactType.Tool) {
+				grabTarget.rb.velocity = (transform.position - grabTarget.snappingOrigin.position) / Time.deltaTime;
+				grabTarget.rb.angularVelocity = OffsetToAngular (grabTarget.snappingOrigin.rotation, transform.rotation, Time.fixedDeltaTime);
 			}
 		}
 	}
