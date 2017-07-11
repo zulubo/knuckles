@@ -54,7 +54,8 @@ public class KnucklesHandControl : MonoBehaviour {
     private float trigger = 0.0f;
     private bool trigger_touched = false;
 
-    private SteamVR_Controller.Device vrcontroller;
+	[HideInInspector]
+	public SteamVR_Controller.Device vrcontroller;
 
 	[Tooltip("use older vr controllers for testing. Trigger controls all fingers")]
 	public bool emulate;

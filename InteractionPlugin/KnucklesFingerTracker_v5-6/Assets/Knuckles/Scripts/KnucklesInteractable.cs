@@ -18,12 +18,16 @@ public class KnucklesInteractable : MonoBehaviour {
 		NonGrabbable,
 		Grabbable,
 		SnappingGrabbableTranslate,
-		SnappingGrabbableRotate
+		SnappingGrabbableRotate,
+		Tool
 	}
 
 	[SerializeField]
-	[Tooltip("Non Grabbable for UI and heavy objects, Grabbable for light pickup-able objects, Snapping Grabbable Translate for levers, etc (hand model follows this transform), Snapping Grabbable Rotate for knobs, etc (same as SGT but effects rotation only)")]
+	[Tooltip("Non Grabbable for UI and heavy objects, Grabbable for light pickup-able objects, Snapping Grabbable Translate for levers, etc (hand model follows this transform), Snapping Grabbable Rotate for knobs, etc (same as SGT but affects rotation only), Tool for weapons/tools that should snap to hand rotation and recieve input")]
 	public interactType Kind = interactType.Grabbable;
+
+	[Tooltip("Transform for tools to snap to the hand. Leave null for this transform.")]
+	public Transform snappingOrigin;
 
 	[HideInInspector]
 	public Rigidbody rb;
@@ -48,6 +52,20 @@ public class KnucklesInteractable : MonoBehaviour {
 	[HideInInspector]
 	public bool isgrabbednow;
 
+
+	// Get steamVR buttons input if we're being held
+	public SteamVR_Controller.Device inputDevice{
+		get{
+			if (isgrabbednow) {
+				return input;
+			} else {
+				return null;
+			}
+		}
+	}
+
+	SteamVR_Controller.Device input;
+
 	public bool isGrabbable{
 		get{
 			return Kind != interactType.NonGrabbable;
@@ -60,15 +78,41 @@ public class KnucklesInteractable : MonoBehaviour {
 		}
 	}
 
+	public bool isTool{
+		get{
+			return (Kind == interactType.Tool);
+		}
+	}
+
 	public bool snapRotate{
 		get{
 			return (Kind == interactType.SnappingGrabbableRotate);
 		}
 	}
 
+	void OnDrawGizmos(){
+		if(Kind==interactType.Tool){
+			Transform t = snappingOrigin;
+			if (t == null)
+				t = transform;
+			Gizmos.color = Color.green;
+			GameObject g = (GameObject)Resources.Load ("HandReference", typeof(GameObject));
+			Mesh m = g.GetComponent<MeshFilter> ().sharedMesh;
+			Gizmos.DrawWireMesh (m, t.position, t.rotation);
+		}
+
+	}
+
+	public void SetInput(SteamVR_Controller.Device device){
+		input = device;
+	}
+
 
 	// Use this for initialization
 	void Awake () {
+		if (snappingOrigin == null)
+			snappingOrigin = transform;
+
 		rb = GetComponent<Rigidbody> ();
 		rb.maxAngularVelocity = 100000;
 		useGravity = rb.useGravity;
