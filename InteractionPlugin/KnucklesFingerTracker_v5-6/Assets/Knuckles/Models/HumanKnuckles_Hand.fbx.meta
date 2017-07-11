@@ -97,6 +97,7 @@ ModelImporter:
     7400060: Hand|Hand|Ungrasp_Middle
     7400062: Hand|Hand|Ungrasp_Ring
     7400064: Hand|Hand|Ungrasp_Pinky
+    7400066: Hand|Hand|Base
     9500000: //RootNode
     13700000: humanMesh
   materials:
@@ -132,7 +133,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
-      hasAdditiveReferencePose: 1
+      hasAdditiveReferencePose: 0
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
@@ -150,9 +151,9 @@ ModelImporter:
       - path: 
         weight: 1
       - path: Hand
-        weight: 0
+        weight: 1
       - path: Hand/hand_r
-        weight: 0
+        weight: 1
       - path: Hand/hand_r/index_01_r
         weight: 1
       - path: Hand/hand_r/index_01_r/index_02_r
@@ -160,6 +161,8 @@ ModelImporter:
       - path: Hand/hand_r/index_01_r/index_02_r/index_03_r
         weight: 1
       - path: Hand/hand_r/index_01_r/index_02_r/index_03_r/index_03_r_end
+        weight: 1
+      - path: Hand/hand_r/index_01_r/index_02_r/index_03_r/index_03_r_end/index_03_r_end_end
         weight: 1
       - path: Hand/hand_r/middle_01_r
         weight: 1
@@ -169,6 +172,8 @@ ModelImporter:
         weight: 1
       - path: Hand/hand_r/middle_01_r/middle_02_r/middle_03_r/middle_03_r_end
         weight: 1
+      - path: Hand/hand_r/middle_01_r/middle_02_r/middle_03_r/middle_03_r_end/middle_03_r_end_end
+        weight: 1
       - path: Hand/hand_r/pinky_01_r
         weight: 1
       - path: Hand/hand_r/pinky_01_r/pinky_02_r
@@ -176,6 +181,8 @@ ModelImporter:
       - path: Hand/hand_r/pinky_01_r/pinky_02_r/pinky_03_r
         weight: 1
       - path: Hand/hand_r/pinky_01_r/pinky_02_r/pinky_03_r/pinky_03_r_end
+        weight: 1
+      - path: Hand/hand_r/pinky_01_r/pinky_02_r/pinky_03_r/pinky_03_r_end/pinky_03_r_end_end
         weight: 1
       - path: Hand/hand_r/ring_01_r
         weight: 1
@@ -185,6 +192,8 @@ ModelImporter:
         weight: 1
       - path: Hand/hand_r/ring_01_r/ring_02_r/ring_03_r/ring_03_r_end
         weight: 1
+      - path: Hand/hand_r/ring_01_r/ring_02_r/ring_03_r/ring_03_r_end/ring_03_r_end_end
+        weight: 1
       - path: Hand/hand_r/thumb_01_r
         weight: 1
       - path: Hand/hand_r/thumb_01_r/thumb_02_r
@@ -193,8 +202,10 @@ ModelImporter:
         weight: 1
       - path: Hand/hand_r/thumb_01_r/thumb_02_r/thumb_03_r/thumb_03_r_end
         weight: 1
+      - path: Hand/hand_r/thumb_01_r/thumb_02_r/thumb_03_r/thumb_03_r_end/thumb_03_r_end_end
+        weight: 1
       - path: humanMesh
-        weight: 0
+        weight: 1
       maskType: 0
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
@@ -956,6 +967,92 @@ ModelImporter:
       - path: humanMesh
         weight: 1
       maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Hand|Hand|Base
+      takeName: Hand|Hand|Base
+      firstFrame: 0
+      lastFrame: 9
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 1
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Hand
+        weight: 1
+      - path: Hand/hand_r
+        weight: 1
+      - path: Hand/hand_r/index_01_r
+        weight: 1
+      - path: Hand/hand_r/index_01_r/index_02_r
+        weight: 1
+      - path: Hand/hand_r/index_01_r/index_02_r/index_03_r
+        weight: 1
+      - path: Hand/hand_r/index_01_r/index_02_r/index_03_r/index_03_r_end
+        weight: 1
+      - path: Hand/hand_r/index_01_r/index_02_r/index_03_r/index_03_r_end/index_03_r_end_end
+        weight: 1
+      - path: Hand/hand_r/middle_01_r
+        weight: 1
+      - path: Hand/hand_r/middle_01_r/middle_02_r
+        weight: 1
+      - path: Hand/hand_r/middle_01_r/middle_02_r/middle_03_r
+        weight: 1
+      - path: Hand/hand_r/middle_01_r/middle_02_r/middle_03_r/middle_03_r_end
+        weight: 1
+      - path: Hand/hand_r/middle_01_r/middle_02_r/middle_03_r/middle_03_r_end/middle_03_r_end_end
+        weight: 1
+      - path: Hand/hand_r/pinky_01_r
+        weight: 1
+      - path: Hand/hand_r/pinky_01_r/pinky_02_r
+        weight: 1
+      - path: Hand/hand_r/pinky_01_r/pinky_02_r/pinky_03_r
+        weight: 1
+      - path: Hand/hand_r/pinky_01_r/pinky_02_r/pinky_03_r/pinky_03_r_end
+        weight: 1
+      - path: Hand/hand_r/pinky_01_r/pinky_02_r/pinky_03_r/pinky_03_r_end/pinky_03_r_end_end
+        weight: 1
+      - path: Hand/hand_r/ring_01_r
+        weight: 1
+      - path: Hand/hand_r/ring_01_r/ring_02_r
+        weight: 1
+      - path: Hand/hand_r/ring_01_r/ring_02_r/ring_03_r
+        weight: 1
+      - path: Hand/hand_r/ring_01_r/ring_02_r/ring_03_r/ring_03_r_end
+        weight: 1
+      - path: Hand/hand_r/ring_01_r/ring_02_r/ring_03_r/ring_03_r_end/ring_03_r_end_end
+        weight: 1
+      - path: Hand/hand_r/thumb_01_r
+        weight: 1
+      - path: Hand/hand_r/thumb_01_r/thumb_02_r
+        weight: 1
+      - path: Hand/hand_r/thumb_01_r/thumb_02_r/thumb_03_r
+        weight: 1
+      - path: Hand/hand_r/thumb_01_r/thumb_02_r/thumb_03_r/thumb_03_r_end
+        weight: 1
+      - path: Hand/hand_r/thumb_01_r/thumb_02_r/thumb_03_r/thumb_03_r_end/thumb_03_r_end_end
+        weight: 1
+      - path: humanMesh
+        weight: 1
+      maskType: 3
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     isReadable: 1
